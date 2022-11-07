@@ -14,14 +14,14 @@ public class JokeFacade
 {
 
 
-    public List<String> parallelRun(List<String> URL) throws ExecutionException, InterruptedException
+    public List<String> parallelRun(List<String> urls) throws ExecutionException, InterruptedException
     {
         ExecutorService es = Executors.newCachedThreadPool();
         List<Future<String>> futures = new ArrayList<>();
         List<String> results = new ArrayList<>();
 
-        for (String s : URL) {
-            Future<String> temp = es.submit(new CallableHttpUtils(s));
+        for (String url : urls) {
+            Future<String> temp = es.submit(new CallableHttpUtils(url));
             futures.add(temp);
         }
         for (Future<String> f : futures) {

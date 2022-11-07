@@ -5,7 +5,7 @@ package dtos;
 public class ChuckDTO
 {
     // properties skal stemme overens med de properties som du får fra din API
-
+    // do not do the dates
     private String created_at;
     private String icon_url;
     private String id;
