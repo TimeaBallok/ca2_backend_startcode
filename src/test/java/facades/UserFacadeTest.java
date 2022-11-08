@@ -85,5 +85,4 @@ public class UserFacadeTest {
         assertEquals(expected, actual);
     }
 
-
 }

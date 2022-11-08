@@ -21,10 +21,9 @@ public class JokeResource
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
     @GET
-    @Produces("text/plain")
-    public String hello()
-    {
-        return "Hello, joke world!";
+    @Produces({MediaType.APPLICATION_JSON})
+    public String demo() {
+        return "{\"msg\":\"Hello, joke World\"}";
     }
 
     @Path("haha")
