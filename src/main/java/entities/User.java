@@ -3,20 +3,15 @@ package entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import java.util.Objects;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.mindrot.jbcrypt.BCrypt;
 
 @Entity
 @Table(name = "users")
+@NamedQuery(name = "User.deleteAllRows", query = "DELETE from User")
 public class User implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -88,4 +83,18 @@ public class User implements Serializable {
     roleList.add(userRole);
   }
 
+  @Override
+  public boolean equals(Object o)
+  {
+    if (this == o) return true;
+    if (!(o instanceof User)) return false;
+    User user = (User) o;
+    return getUserName().equals(user.getUserName()) && getUserPass().equals(user.getUserPass()) && Objects.equals(getRoleList(), user.getRoleList());
+  }
+
+  @Override
+  public int hashCode()
+  {
+    return Objects.hash(getUserName(), getUserPass(), getRoleList());
+  }
 }
