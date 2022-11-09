@@ -35,8 +35,8 @@ public class JokeResource
         URL.add("https://icanhazdadjoke.com/");
         URL.add("https://api.chucknorris.io/jokes/random");
         List<String> jokeJSON = jf.parallelRun(URL);
-        ChuckDTO chuck = GSON.fromJson(jokeJSON.get(1), ChuckDTO.class);
         DadDTO dad = GSON.fromJson(jokeJSON.get(0), DadDTO.class);
+        ChuckDTO chuck = GSON.fromJson(jokeJSON.get(1), ChuckDTO.class);
         CombinedDTO combi = new CombinedDTO(dad,chuck);
         return GSON.toJson(combi);
     }
